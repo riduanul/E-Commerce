@@ -19,7 +19,7 @@ exports.getAllProducts = async (req, res) => {
 // Update product-- Admin
 
 exports.upadateProduct = async (req, res, next) => {
-  let product = Product.findById(req, params.id);
+  let product = Product.findById(req.params.id);
   if (!product) {
     return res.status(500).send({
       success: false,
@@ -34,5 +34,22 @@ exports.upadateProduct = async (req, res, next) => {
   res.status(200).send({
     success: true,
     product,
+  });
+};
+
+// Delete Product
+
+exports.deleteProduct = async (req, res, next) => {
+  const product = await Product.findById(req.params.id);
+  if (!product) {
+    return res.status(500).send({
+      success: false,
+      message: "Product not found",
+    });
+  }
+  await product.remove();
+  res.status(200).send({
+    success: true,
+    message: "Product Deleted successfuly",
   });
 };
