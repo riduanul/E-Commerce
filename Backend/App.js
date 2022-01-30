@@ -8,10 +8,12 @@ app.use(express.json());
 app.use(cookieParser());
 //Route Imports
 const product = require("./Routes/ProductRoutes");
-const user = require("./Routes/User.Routes");
+const user = require("./Routes/UserRoutes");
+const order = require("./Routes/OrderRoute");
 
 app.use("/api/v1", product);
 app.use("/api/v1", user);
+app.use("/api/v1", order);
 
 //Middleware for Errors
 app.use(errorMiddleWare);
