@@ -5,7 +5,7 @@ const orderSchema = new Schema({
   shippingInfo: {
     address: { type: String, required: true },
     city: { type: String, required: true },
-    state: { type: String, reqired: true },
+    state: { type: String, required: true },
     country: { type: String, required: true },
     pinCode: { type: Number, required: true },
     PhoneNo: { type: Number, required: true },
@@ -31,7 +31,7 @@ const orderSchema = new Schema({
   paymentInfo: {
     id: { type: String },
     status: { type: String, required: true },
-    paidAt: { type: Date, required: true, default: Date.now() },
+    paidAt: { type: Date, required: true, default: Date.now },
     itemsPrice: { type: Number, default: 0 },
     taxPrice: { type: Number, required: true, default: 0 },
     shippingPrice: { type: Number, required: true, default: 0 },
@@ -45,7 +45,7 @@ const orderSchema = new Schema({
     createdAt: {
       type: Date,
       required: true,
-      default: Date.now(),
+      default: Date.now,
     },
   },
 });

@@ -1,0 +1,13 @@
+{
+    "cSpell.words": [
+        "Haque",
+        "Riduanul"
+    ],
+
+    "emmet.excludeLanguages": [
+        "markdown"
+    ],
+    "emmet.includeLanguages": {
+        "javascript":"javascriptreact"
+    }
+}

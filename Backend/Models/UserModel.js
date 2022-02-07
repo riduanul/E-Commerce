@@ -9,7 +9,7 @@ userSchema = new Schema({
   name: {
     type: String,
     required: [true, "Please Enter Your Name"],
-    maxlength: [30, "Name Cannot axceed 30 characters"],
+    maxlength: [30, "Name Cannot exceed 30 characters"],
     minlength: [4, "Name should have more than 4 characters"],
   },
   email: {

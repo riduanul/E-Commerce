@@ -1,0 +1,14 @@
+.icons > input{
+    width: 100px;
+}
+.btn-nav{
+    border: 1px solid rgb(53, 79, 165);
+    margin: 2px;
+}
+
+.btn-nav:hover{
+    background-color: rgb(67, 126, 221);
+    transition:all 1s;
+    color:white;
+}
+

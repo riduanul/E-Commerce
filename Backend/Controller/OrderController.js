@@ -79,14 +79,19 @@ exports.getAllOrders = catchAsyncErrors(async (req, res, next) => {
   });
 });
 
-//Upadate Order status  ---admin
+//Update Order status  ---admin
 
 exports.updateOrder = catchAsyncErrors(async (req, res, next) => {
   const order = await Order.findById(req.params.id);
 
+
+  if (!order) {
+    return next(new ErrorHandler("Order not found with this Id", 404));
+  }
+
   if (order.orderStatus === "Delivered") {
     return next(
-      new ErrorHandler("You have already delivered this Product", 401)
+      new ErrorHandler("You have already delivered this Order", 401)
     );
   }
 
@@ -110,7 +115,7 @@ exports.updateOrder = catchAsyncErrors(async (req, res, next) => {
 async function updateStock(id, quantity) {
   const product = await Product.findById(id);
 
-  product.stock -= quantity;
+  product.Stock -= quantity;
   await product.save({ validateBeforeSave: false });
 }
 
