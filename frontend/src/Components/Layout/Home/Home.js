@@ -1,19 +1,29 @@
-import React, { Fragment } from 'react';
+import React, { Fragment, useEffect } from 'react';
 import './Home.css'
 import {CgMouse} from 'react-icons/cg';
 import Product from "../Product/Product.js"
 import MetaData from '../../MetaData';
+import {getProduct} from '../../../Actions/ProductAction';
+import {useSelector, useDispatch } from 'react-redux'
+import Loader from '../Loader/Loader';
+import { useAlert } from 'react-alert';
 
-const product = {
-    name: "Blue t-shirt",
-    images:[{url: "https://i.ibb.co/DRST11n/1.webp"}],
-    price: "$300",
-    _id:"riduanul"
-
-}
 const Home = () => {
+
+    const alert = useAlert();
+const dispatch = useDispatch();
+const {loading, error, products, producstCount} = useSelector(state => state.products)
+
+useEffect(()=>{
+    if(error){
+        return alert.error(error)
+    }
+    dispatch(getProduct());
+},[dispatch, error])
+
     return (
-      <Fragment>
+<Fragment>
+{loading ? <Loader/> : <Fragment>
           <MetaData title="ECOMMERCE"/>
 
             <div className="banner">
@@ -30,18 +40,14 @@ const Home = () => {
 
         <h2 className='homeHeading'> Featured Products</h2>
 <div className="container" id='container'>
-    <Product product={product}/>
-    <Product product={product}/>
-    <Product product={product}/>
-    <Product product={product}/>
-    <Product product={product}/>
-    <Product product={product}/>
-    <Product product={product}/>
-    <Product product={product}/>
+    {products && products.map(product => (
+        <Product product = {product}/>
+    ))}
 
 </div>
 
-      </Fragment>
+      </Fragment>}
+</Fragment>
     );
 };
 

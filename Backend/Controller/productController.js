@@ -15,7 +15,8 @@ exports.createProduct = catchAsyncError(async (req, res, next) => {
 
 // Get all products
 exports.getAllProducts = catchAsyncError(async (req, res, next) => {
-  const resultPerpage = 5;
+
+  const resultPerpage = 8;
   const productCount = await Product.countDocuments();
 
   const apiFeature = new ApiFeatures(Product.find(), req.query)
@@ -34,7 +35,7 @@ exports.getAllProducts = catchAsyncError(async (req, res, next) => {
 
 // Update product-- Admin
 
-exports.upadateProduct = catchAsyncError(async (req, res, next) => {
+exports.updateProduct = catchAsyncError(async (req, res, next) => {
   let product = Product.findById(req.params.id);
   if (!product) {
     return next(new ErrorHandler("Product Not Found", 404));

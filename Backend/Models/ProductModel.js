@@ -9,11 +9,11 @@ const productSchema = new Schema({
   },
   description: {
     type: String,
-    required: [true, "Plese Enter Product Description"],
+    required: [true, "Please Enter Product Description"],
   },
   price: {
     type: Number,
-    required: [true, "Plese Enter Product Price"],
+    required: [true, "Please Enter Product Price"],
     maxLength: [8, "Price cannot exceed 8 characters"],
   },
 
