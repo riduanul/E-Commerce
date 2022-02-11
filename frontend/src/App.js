@@ -5,8 +5,9 @@ import WebFont from 'webfontloader';
 import { useEffect } from 'react';
 import Footer from './Components/Layout/Footer/Footer';
 import Loader from './Components/Layout/Loader/Loader'
-
-
+import ProductDetails from './Components/ProductDetails/ProductDetails';
+import Home from './Components/Layout/Home/Home';
+import {Fragment} from 'react';
 function App() {
   
   useEffect(()=>{
@@ -18,11 +19,17 @@ function App() {
   },[])
  
   return (
-    <Routes>
-               <Route path="/" element={<Header/>}/>
-               
-               
-    </Routes>
+    
+      <Fragment>
+        <Header/>
+              <Routes>
+                  <Route path="/" element={<Home/>}/>
+                  <Route path="/product/:id" element={<ProductDetails/>}/>
+               </Routes>
+         
+        <Footer/>
+    </Fragment>
+    
 
   );
 }

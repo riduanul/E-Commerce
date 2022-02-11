@@ -1,7 +1,7 @@
 import React from 'react';
-import Footer from '../Footer/Footer.js';
+// import Footer from '../Footer/Footer.js';
 import Navbar from '../Navbar/Navbar.js';
-import Home from '../Home/Home.js'
+// import Home from '../Home/Home.js'
 
 
 
@@ -11,8 +11,8 @@ const Header = () => {
         <div>
           
            <Navbar/>
-           <Home/>
-           <Footer/>
+           {/* <Home/>
+           <Footer/> */}
             
         </div>
     );

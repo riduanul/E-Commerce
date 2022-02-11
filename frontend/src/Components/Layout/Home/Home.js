@@ -19,7 +19,7 @@ useEffect(()=>{
         return alert.error(error)
     }
     dispatch(getProduct());
-},[dispatch, error])
+},[dispatch, error, alert])
 
     return (
 <Fragment>
@@ -41,7 +41,7 @@ useEffect(()=>{
         <h2 className='homeHeading'> Featured Products</h2>
 <div className="container" id='container'>
     {products && products.map(product => (
-        <Product product = {product}/>
+        <Product key={product._id} product = {product}/>
     ))}
 
 </div>
