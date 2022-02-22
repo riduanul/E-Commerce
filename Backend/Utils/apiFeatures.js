@@ -32,10 +32,10 @@ class ApiFeatures {
     return this;
   }
 
-  pagination(resultPerpage) {
+  pagination(resultPerPage) {
     const currentPage = Number(this.queryStr.page) || 1; // 50 - 10
-    const skip = resultPerpage * (currentPage - 1);
-    this.query = this.query.limit(resultPerpage).skip(skip);
+    const skip = resultPerPage * (currentPage - 1);
+    this.query = this.query.limit(resultPerPage).skip(skip);
     return this;
   }
 }

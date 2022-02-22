@@ -12,11 +12,13 @@ import {
     CLEAR_ERRORS 
     } from '../Constants/ProductConstants';
 
-export const getProduct = () => async(dispatch) =>{
+export const getProduct = (keyword="", currentPage=1, price=[0,25000]) => async(dispatch) =>{
     try{
         dispatch({type: ALL_PRODUCT_REQUEST});
         
-        const {data} = await axios.get("/api/v1/products");
+        let link =`/api/v1/products?keyword=${keyword}&page=${currentPage}&price[gte]=${price[0]}&price[lte]=${price[1]}`;
+        
+        const {data} = await axios.get(link);
         
         dispatch({
             type: ALL_PRODUCT_SUCCESS,
@@ -26,7 +28,7 @@ export const getProduct = () => async(dispatch) =>{
     } catch(error) {
         dispatch({
             type: ALL_PRODUCT_FAIL,
-            payload: error.response.data.message
+            payload: error.message //error.response.data.message
         })
     }
 }

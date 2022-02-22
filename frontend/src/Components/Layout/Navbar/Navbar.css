@@ -11,4 +11,19 @@
     transition:all 1s;
     color:white;
 }
+a{
+    text-decoration: none;
+    color: black;
+    font: 500 1.2vmax "san-sarif"
+}
+a:hover {
+    color: tomato;
+}
+li{
+    margin: 2vmax ;
+}
+
+a.active{
+    color: tomato;
+}
 

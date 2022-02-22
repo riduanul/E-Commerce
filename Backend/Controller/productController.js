@@ -16,20 +16,26 @@ exports.createProduct = catchAsyncError(async (req, res, next) => {
 // Get all products
 exports.getAllProducts = catchAsyncError(async (req, res, next) => {
 
-  const resultPerpage = 8;
+  const resultPerPage = 5;
   const productsCount = await Product.countDocuments();
 
   const apiFeature = new ApiFeatures(Product.find(), req.query)
 
     .search()
     .filter()
-    .pagination(resultPerpage);
 
-  const products = await apiFeature.query;
+    let = products = await apiFeature.query;
+    let = filteredProductsCount = products.length;
+
+    apiFeature.pagination(resultPerPage);
+
+  products = await apiFeature.query;
   res.status(200).send({
     success: true,
     products,
     productsCount,
+    resultPerPage,
+    filteredProductsCount
   });
 });
 
@@ -73,7 +79,7 @@ exports.deleteProduct = catchAsyncError(async (req, res, next) => {
   await product.remove();
   res.status(200).send({
     success: true,
-    message: "Product Deleted successfuly",
+    message: "Product Deleted successfully",
   });
 });
 
@@ -137,6 +143,6 @@ exports.deleteReviews = catchAsyncError(async (req, res, next) => {
   await product.review.remove();
   res.status(200).send({
     success: true,
-    message: "Review Deleted successfuly",
+    message: "Review Deleted successfully",
   });
 });
